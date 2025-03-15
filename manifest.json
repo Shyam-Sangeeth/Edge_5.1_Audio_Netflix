@@ -1,0 +1,63 @@
+{
+   "manifest_version": 3,
+   "author": "Shyam Sangeeth",
+   "action": {},
+   "background": {
+      "service_worker": "background.js"
+   },
+   "content_scripts": [
+      {
+         "all_frames": true,
+         "css": [
+            "style_fix.css"
+         ],
+         "js": [
+            "content_script.js"
+         ],
+         "matches": [
+            "*://assets.nflxext.com/*/ffe/player/html/*",
+            "*://www.assets.nflxext.com/*/ffe/player/html/*",
+            "*://*.a.nflxso.net/sec/*/ffe/player/html/*",
+            "*://netflix.com/*",
+            "*://www.netflix.com/*"
+         ],
+         "run_at": "document_start"
+      }
+   ],
+   "declarative_net_request": {
+      "rule_resources": [
+         {
+            "enabled": true,
+            "id": "redirect_to_patched",
+            "path": "redirect_rules.json"
+         }
+      ]
+   },
+   "description": "Enables 5.1 surround sound for Netflix in Microsoft Edge",
+   "host_permissions": [
+      "*://assets.nflxext.com/*",
+      "*://a.nflxso.net/*",
+      "*://www.netflix.com/*"
+   ],
+   "icons": {
+      "48": "icons/icon.png"
+   },
+   "name": "5.1 Surround for Netflix",
+   "permissions": [
+      "storage",
+      "declarativeNetRequest",
+      "declarativeNetRequestWithHostAccess"
+   ],
+   "short_name": "Netflix 5.1 Audio",
+   "version": "1.0.0",
+   "web_accessible_resources": [
+      {
+         "matches": [
+            "*://www.netflix.com/*"
+         ],
+         "resources": [
+            "cadmium-playercore.js"
+         ]
+      }
+   ]
+}
