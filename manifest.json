@@ -1,10 +1,32 @@
 {
    "manifest_version": 3,
    "author": "Shyam Sangeeth",
-   "action": {},
+   "name": "5.1 Surround for Netflix",
+   "short_name": "Netflix 5.1 Audio",
+   "version": "1.1.0",
+   "description": "Enables 5.1 surround sound and customizable subtitles for Netflix",
+   
+   "action": {
+      "default_popup": "popup.html",
+      "default_title": "Netflix Subtitles Fix"
+   },
+
    "background": {
       "service_worker": "background.js"
    },
+
+   "permissions": [
+      "storage",
+      "declarativeNetRequest",
+      "declarativeNetRequestWithHostAccess"
+   ],
+
+   "host_permissions": [
+      "*://assets.nflxext.com/*",
+      "*://a.nflxso.net/*",
+      "*://*.netflix.com/*"
+   ],
+
    "content_scripts": [
       {
          "all_frames": true,
@@ -24,6 +46,7 @@
          "run_at": "document_start"
       }
    ],
+
    "declarative_net_request": {
       "rule_resources": [
          {
@@ -33,23 +56,11 @@
          }
       ]
    },
-   "description": "Enables 5.1 surround sound for Netflix in Microsoft Edge",
-   "host_permissions": [
-      "*://assets.nflxext.com/*",
-      "*://a.nflxso.net/*",
-      "*://www.netflix.com/*"
-   ],
+
    "icons": {
       "48": "icons/icon.png"
    },
-   "name": "5.1 Surround for Netflix",
-   "permissions": [
-      "storage",
-      "declarativeNetRequest",
-      "declarativeNetRequestWithHostAccess"
-   ],
-   "short_name": "Netflix 5.1 Audio",
-   "version": "1.0.0",
+
    "web_accessible_resources": [
       {
          "matches": [

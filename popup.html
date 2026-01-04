@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 260px; font-family: sans-serif; padding: 12px; background-color: #f9f9f9; }
+    h3 { font-size: 14px; margin: 0 0 8px 0; border-bottom: 1px solid #ccc; padding-bottom: 4px; color: #333; }
+    .section { margin-bottom: 18px; background: white; padding: 8px; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .control { margin-bottom: 10px; }
+    label { font-size: 12px; display: block; font-weight: bold; margin-bottom: 4px; }
+    input[type="range"] { width: 100%; cursor: pointer; }
+    input[type="text"] { width: 80px; padding: 4px; border: 1px solid #ccc; border-radius: 3px; }
+    
+    /* Smaller help box styling */
+    .help-box { 
+        font-size: 8px; /* Reduced from 10px */
+        color: #888;    /* Lighter grey */
+        background-color: #f4f4f4; 
+        padding: 2px 5px; 
+        border-radius: 2px; 
+        margin-top: 3px;
+        line-height: 1.1;
+        border-left: 2px solid #0078d4;
+    }
+
+    #reset_btn { 
+        width: 100%; margin-top: 5px; padding: 8px; 
+        background-color: #e81123; color: white; border: none; 
+        cursor: pointer; border-radius: 4px; font-weight: bold;
+    }
+    #reset_btn:hover { background-color: #ad0715; }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h3>Netflix App (PWA)</h3>
+    <div class="control">
+      <label>Size: <span id="val_app_size">100</span>%</label>
+      <input type="range" id="app_size" min="20" max="300" value="100">
+    </div>
+    <div class="control">
+      <label>Position (bottom):</label>
+      <input type="text" id="app_bottom" value="20%">
+      <div class="help-box">
+        💡 Use <b>%</b> (e.g., 10%) or <b>px</b> (e.g., 50px).
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Edge Browser</h3>
+    <div class="control">
+      <label>Size: <span id="val_edge_size">100</span>%</label>
+      <input type="range" id="edge_size" min="20" max="200" value="100">
+    </div>
+    <div class="control">
+      <label>Position (bottom):</label>
+      <input type="text" id="edge_bottom" value="20%">
+      <div class="help-box">
+        💡 Use <b>%</b> (e.g., 10%) or <b>px</b> (e.g., 50px).
+      </div>
+    </div>
+  </div>
+
+  <button id="reset_btn">Reset to Defaults</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
