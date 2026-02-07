@@ -1,17 +1,3 @@
-function chromeStorageGet(opts) {
-  return new Promise((resolve) => {
-    chrome.storage.sync.get(opts, resolve);
-  });
-}
-
-function addSettingsToHtml(settings) {
-  const mainScript = document.createElement("script");
-  mainScript.type = "application/json";
-  mainScript.text = JSON.stringify(settings);
-  mainScript.id = "netflix-5_1-settings";
-  document.documentElement.appendChild(mainScript);
-}
-
 /* -------------------- LOGGING -------------------- */
 
 const LOG_PREFIX = "[NF-5.1][CS]";
@@ -20,15 +6,6 @@ function log(level, ...args) {
   const time = new Date().toLocaleTimeString();
   console.log(`${LOG_PREFIX} ${time} ${level}`, ...args);
 }
-
-/* -------------------- SETTINGS -------------------- */
-
-chromeStorageGet({ use6Channels: true }).then((items) => {
-  log("INFO", "Loaded settings:", items);
-  addSettingsToHtml(items);
-});
-
-/* -------------------- WATCH FIX -------------------- */
 
 (() => {
   log("INFO", "Content script loaded at", location.href);
